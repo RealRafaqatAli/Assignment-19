@@ -1,0 +1,555 @@
+/* ===================================
+   SNAKE + LUDO GAMES - MAIN STYLESHEET
+   =================================== */
+
+/* --- 1. GLOBAL RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- 2. BODY STYLES --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    padding: 20px;
+}
+
+/* --- 3. MAIN CONTAINER --- */
+.games-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- 4. MAIN HEADING --- */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #ffc107;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+}
+
+/* --- 5. GAMES WRAPPER (SIDE BY SIDE) --- */
+.games-wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* --- 6. GAME SECTION COMMON --- */
+.game-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.game-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffc107;
+    font-size: 1.8em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 193, 7, 0.5);
+}
+
+/* ===================================
+   🐍 SNAKE GAME STYLES
+   =================================== */
+
+.snake-section {
+    flex: 1;
+    min-width: 350px;
+    max-width: 500px;
+}
+
+.snake-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- Snake Scoreboard --- */
+.snake-scoreboard {
+    display: flex;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.score-item {
+    text-align: center;
+}
+
+.score-label {
+    display: block;
+    font-size: 0.9em;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+}
+
+.score-value {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #ffc107;
+}
+
+/* --- Snake Board --- */
+.snake-board {
+    display: grid;
+    grid-template-columns: repeat(20, 20px);
+    grid-template-rows: repeat(20, 20px);
+    gap: 1px;
+    background: #1a1a2e;
+    padding: 10px;
+    border: 3px solid #4a3728;
+    border-radius: 10px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.snake-cell {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+.snake-cell.empty {
+    background: #2a2a4e;
+}
+
+.snake-cell.snake-head {
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4ade80;
+    animation: pulse 1.5s infinite;
+}
+
+.snake-cell.snake-body {
+    background: #22c55e;
+    border-radius: 50%;
+    color: #1a1a2e;
+    font-weight: bold;
+}
+
+.snake-cell.snake-food {
+    background: #ef4444;
+    border-radius: 50%;
+    animation: bounce 0.5s infinite alternate;
+}
+
+/* --- Snake Controls --- */
+.snake-controls {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.snake-controls p {
+    margin: 5px 0;
+    color: #b0b0b0;
+}
+
+.control-keys {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.key {
+    background: #333;
+    color: #ffc107;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #555;
+    min-width: 40px;
+}
+
+.control-hint {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* --- Snake Action Buttons --- */
+.snake-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ===================================
+   🎲 LUDO GAME STYLES
+   =================================== */
+
+.ludo-section {
+    flex: 1;
+    min-width: 400px;
+    max-width: 500px;
+}
+
+.ludo-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- Ludo Board --- */
+.ludo-board {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    gap: 1px;
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 5px;
+    width: 300px;
+    height: 300px;
+}
+
+/* Homes */
+.home {
+    grid-row: span 6;
+    grid-column: span 6;
+    border: 1px solid #000;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-inner {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    gap: 5px;
+}
+
+.token {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0.3);
+}
+
+/* Home Colors */
+.red { background: #ff4757; }
+.green { background: #2ed573; }
+.blue { background: #1e90ff; }
+.yellow { background: #ffa502; }
+
+.red .token { background: #ff4757; }
+.green .token { background: #2ed573; }
+.blue .token { background: #1e90ff; }
+.yellow .token { background: #ffa502; }
+
+/* Center */
+.center-home {
+    grid-column: 7 / span 3;
+    grid-row: 7 / span 3;
+    background: conic-gradient(
+        #2ed573 0deg 90deg, 
+        #1e90ff 90deg 180deg, 
+        #ffa502 180deg 270deg, 
+        #ff4757 270deg 360deg
+    );
+    border: 1px solid #000;
+}
+
+/* Paths */
+.path-top { grid-column: 7 / span 3; grid-row: 1 / span 6; background: #fff; }
+.path-bottom { grid-column: 7 / span 3; grid-row: 10 / span 6; background: #fff; }
+.path-left { grid-column: 1 / span 6; grid-row: 7 / span 3; background: #fff; }
+.path-right { grid-column: 10 / span 6; grid-row: 7 / span 3; background: #fff; }
+
+/* Cells */
+.cell {
+    border: 0.5px solid #ccc;
+    position: relative;
+}
+
+/* Colored Path Cells */
+.c-red-1, .c-red-2, .c-red-3, .c-red-4, .c-red-5, .c-red-start { background: #ff4757; }
+.c-green-1, .c-green-2, .c-green-3, .c-green-4, .c-green-5, .c-green-start { background: #2ed573; }
+.c-blue-1, .c-blue-2, .c-blue-3, .c-blue-4, .c-blue-5, .c-blue-start { background: #1e90ff; }
+.c-yellow-1, .c-yellow-2, .c-yellow-3, .c-yellow-4, .c-yellow-5, .c-yellow-start { background: #ffa502; }
+
+.c-red-start, .c-green-start, .c-blue-start, .c-yellow-start {
+    border: 1px solid #000;
+}
+
+.star::before {
+    content: '★';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(0,0,0,0.4);
+    font-size: 14px;
+}
+
+/* --- Ludo Controls --- */
+.ludo-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.dice-section,
+.player-turn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+}
+
+.dice-label,
+.turn-label {
+    color: #b0b0b0;
+}
+
+.dice-value {
+    background: #333;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.turn-player {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.red-player {
+    background: #ff4757;
+    color: white;
+}
+
+/* ===================================
+   BUTTONS (Shared)
+   =================================== */
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-start {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+}
+
+.btn-start:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
+}
+
+.btn-pause {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+}
+
+.btn-pause:hover {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    transform: translateY(-2px);
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.btn-reset:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    transform: translateY(-2px);
+}
+
+.btn-roll {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+    font-size: 1.1em;
+}
+
+.btn-roll:hover {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+.games-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: #888;
+}
+
+.games-footer .note {
+    font-size: 0.9em;
+    color: #ffc107;
+    margin-top: 10px;
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 10px #4ade80; }
+    50% { box-shadow: 0 0 20px #4ade80, 0 0 30px #4ade80; }
+}
+
+@keyframes bounce {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px currentColor; }
+    50% { box-shadow: 0 0 20px currentColor; }
+}
+
+/* Hover effects for cells */
+.snake-cell:not(.empty):hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.btn:active {
+    transform: translateY(0) !important;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media screen and (max-width: 1100px) {
+    .games-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .snake-section,
+    .ludo-section {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .snake-board {
+        grid-template-columns: repeat(20, 15px);
+        grid-template-rows: repeat(20, 15px);
+    }
+    
+    .snake-cell {
+        width: 15px;
+        height: 15px;
+        font-size: 12px;
+    }
+    
+    .ludo-board {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .game-section h2 {
+        font-size: 1.4em;
+    }
+    
+    .snake-scoreboard {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .snake-board {
+        grid-template-columns: repeat(20, 12px);
+        grid-template-rows: repeat(20, 12px);
+        padding: 5px;
+    }
+    
+    .snake-cell {
+        width: 12px;
+        height: 12px;
+        font-size: 10px;
+    }
+    
+    .ludo-board {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+
+/* ===================================
+   SCROLLBAR CUSTOMIZATION
+   =================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b58863;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffc107;
+}
